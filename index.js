@@ -9,13 +9,32 @@ let player = {
     name: 'You',
     chips: 200
 }
+let tooMany = 0
 document.getElementById("player-el").textContent = player.name + ': $' + player.chips
 function getRandomCard() {
     let randomCard = Math.floor(Math.random()*13)+1
     if (randomCard > 9) {
         randomCard = 10
+        for (let i=0; i<cards.length; i++) {
+            if (randomCard === cards[i]) {
+                tooMany++
+                if (tooMany === 16) {
+                    tooMany = 0
+                    getRandomCard()
+                }
+            }
+        }
     } else if (randomCard === 1) {
         randomCard = 11
+    }
+    for (let i=0; i<cards.length; i++) {
+        if (randomCard === cards[i]) {
+            tooMany++
+            if (tooMany === 4) {
+                tooMany = 0
+                getRandomCard()
+            }
+        }
     }
     return randomCard
 }

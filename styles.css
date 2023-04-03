@@ -21,6 +21,7 @@ button {
     border-radius: 4px;
     padding: 5px 10px;
     background: goldenrod;
+    transition: all 0.09s;
 }
 button:active {
     transform: scale(0.96)
